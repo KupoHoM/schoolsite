@@ -21,10 +21,7 @@ class LessonsViewSet(ModelViewSet):
     permission_classes = (DjangoModelPermissions,)
     pagination_class = LessonsPagination
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['title',
-                        'discipline',
-                        'Lesson_Teacher',
-                        ]
+    filterset_fields = ['title', 'discipline', 'Lesson_Teacher', ]
 
     @action(detail=False, methods=["POST"])
     def multiple_upload(self, request, *args, **kwargs):

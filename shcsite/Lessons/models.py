@@ -22,14 +22,7 @@ class Lessons(models.Model):
         return self.title
 
     class Meta:
-        # verbose_name = 'Lessons'
-        # verbose_name_plural = 'Lessons'
+        verbose_name = 'Lessons'
+        verbose_name_plural = 'Lessons'
         ordering = ['-id']
 
-    # @property
-    # def title_name(self):
-    #     return self.title.name
-    #
-    # @title_name.setter
-    # def title_name(self, value):
-    #     self.title, _ = Discipline.objects.get_or_create(name=value)

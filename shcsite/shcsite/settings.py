@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from datetime import timedelta
 from pathlib import Path
 import os
-from keys import S3_ACC_KEY_ID, S3_SEC_ACC_KEY, SEC_KEY, S3_STOR_NAME
+from .keys import S3_ACC_KEY_ID, S3_SEC_ACC_KEY, SEC_KEY, S3_STOR_NAME
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Lessons.apps.LessonsConfig',
     'Discipline.apps.DisciplineConfig',
     'Teachers.apps.TeachersConfig',
+    'Homework.apps.HomeworkConfig',
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
