@@ -191,7 +191,7 @@ target/
 celerybeat-schedule
 
 # SageMath parsed files
-.sage.py
+*.sage.py
 
 # dotenv
 .env
@@ -210,3 +210,5 @@ ENV/
 
 # mkdocs documentation
 /site
+
+# End of https://www.gitignore.io/api/macos,linux,django,python,pycharm
