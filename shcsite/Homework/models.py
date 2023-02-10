@@ -14,7 +14,7 @@ class HomeWork(models.Model):
                                   null=True, blank=True, verbose_name='Lesson')
     hm_teacher = models.ForeignKey(Teachers, on_delete=models.CASCADE,
                                    null=True, blank=True, verbose_name='Teacher')
-    hm_file = models.FileField(verbose_name='file', upload_to='HomeWork/',
+    file = models.FileField(verbose_name='file', upload_to='HomeWork/',
                                blank=True, null=True)
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)

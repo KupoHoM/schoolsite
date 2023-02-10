@@ -23,6 +23,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from Lessons.views import LessonsViewSet
 from Teachers.views import TeachersViewSet
 from Discipline.views import DisciplineViewSet
+from Homework.views import HomeWorkViewSet
 
 
 schema_view = get_swagger_view(title='DRF API')
@@ -30,7 +31,7 @@ router = routers.DefaultRouter()
 router.register(r'Discipline', DisciplineViewSet,)
 router.register(r'Lessons', LessonsViewSet)
 router.register(r'Teachers', TeachersViewSet)
-
+router.register(r'HomeWork', HomeWorkViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
