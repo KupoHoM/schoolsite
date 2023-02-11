@@ -20,14 +20,8 @@ router.register(r'HomeWork', HomeWorkViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('swagger/', schema_view),
-    path('api/v1/', include(router.urls)),
 
-    # path('api/v1/Discipline/', DisciplineViewSet.as_view()),
-    # path('api/v1/Lessons/', LessonsAPIList.as_view()),
-    # path('api/v1/Lessons/<int:pk>/', LessonsAPIUpdate.as_view()),
-    # path('api/v1/Lessonsdelete/<int:pk>/', LessonsAPIDestroy.as_view()),
-    # path('api/v1/Teachers/', TeachersAPIList.as_view()),
-    # path('api/v1/Teachers/<int:pk>/', TeachersAPIUpdate.as_view()),
+    path('api/v1/', include(router.urls)),
 
     path('api/v1/auth/', include('djoser.urls')),
     path('api/v1/drf-auth/', include('rest_framework.urls')),
@@ -38,4 +32,3 @@ urlpatterns = [
     path('api/v1/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
 ]
-

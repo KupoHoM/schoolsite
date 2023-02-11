@@ -25,4 +25,3 @@ class Lessons(models.Model):
         verbose_name = 'Lessons'
         verbose_name_plural = 'Lessons'
         ordering = ['-id']
-
