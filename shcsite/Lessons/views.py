@@ -1,12 +1,12 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import DjangoModelPermissions
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from .models import Lessons
 from .serializers import LessonsSerializer, MultipleFileSerializer
+from shcsite.permissions import DjangoCustomPermissions
 
 
 class LessonsPagination(PageNumberPagination):
@@ -18,7 +18,7 @@ class LessonsPagination(PageNumberPagination):
 class LessonsViewSet(ModelViewSet):
     queryset = Lessons.objects.all()
     serializer_class = LessonsSerializer
-    permission_classes = (DjangoModelPermissions,)
+    permission_classes = (DjangoCustomPermissions,)
     pagination_class = LessonsPagination
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['title', 'discipline', 'Lesson_Teacher', ]
@@ -53,30 +53,3 @@ class LessonsViewSet(ModelViewSet):
         if files_list:
             Lessons.objects.bulk_create(files_list)
         return Response('Success')
-
-# class LessonsAPIList(generics.ListCreateAPIView):
-#     queryset = Lessons.objects.all()
-#     serializer_class = LessonsSerializer
-#     # permission_classes = (DjangoObjectPermissions,)
-#     permission_classes = (DjangoModelPermissions,)
-#     pagination_class = LessonsAPIListPagination
-#     filter_backends = [DjangoFilterBackend]
-#     filterset_fields = ['title', 'number_lect']
-#
-#     @classmethod
-#     def get_extra_actions(cls):
-#         return []
-#
-#
-# class LessonsAPIUpdate(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Lessons.objects.all()
-#     serializer_class = LessonsSerializer
-#     permission_classes = (DjangoModelPermissions,)
-#
-#     # authentication_classes = (TokenAuthentication, )
-#
-#
-# class LessonsAPIDestroy(generics.RetrieveDestroyAPIView):
-#     queryset = Lessons.objects.all()
-#     serializer_class = LessonsSerializer
-#     permission_classes = (DjangoObjectPermissions,)

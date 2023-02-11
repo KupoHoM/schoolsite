@@ -1,12 +1,12 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import DjangoModelPermissions
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from .models import HomeWork
 from .serializers import HomeWorkSerializer, MultipleFileSerializer
+from shcsite.permissions import DjangoCustomPermissions
 
 
 class HomeWorkPagination(PageNumberPagination):
@@ -18,16 +18,14 @@ class HomeWorkPagination(PageNumberPagination):
 class HomeWorkViewSet(ModelViewSet):
     queryset = HomeWork.objects.all()
     serializer_class = HomeWorkSerializer
-    permission_classes = (DjangoModelPermissions,)
+    permission_classes = (DjangoCustomPermissions,)
     pagination_class = HomeWorkPagination
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['title', 'hm_discipline', 'hm_lesson', 'hm_teacher']
 
     @action(detail=False, methods=["POST"])
     def multiple_upload(self, request):
-        multi = MultipleFileSerializer(data=request.data,
-                                       context={'request': request}
-                                       )
+        multi = MultipleFileSerializer(data=request.data, context={'request': request})
         multi.is_valid(raise_exception=True)
         title = multi.validated_data.get("title")
         hm_discipline = multi.validated_data.get("hm_discipline")
