@@ -3,7 +3,9 @@ from .models import HomeWork
 
 
 class HomeWorkSerializer(serializers.ModelSerializer):
+    title = serializers.CharField()
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    # file = serializers.ListField(child=serializers.FileField())
 
     class Meta:
         model = HomeWork

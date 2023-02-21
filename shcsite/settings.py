@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Discipline.apps.DisciplineConfig',
     'Teachers.apps.TeachersConfig',
     'Homework.apps.HomeworkConfig',
+    'telebot.apps.TelebotConfig',
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
