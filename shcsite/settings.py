@@ -12,23 +12,30 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from datetime import timedelta
 from pathlib import Path
 import os
-from .keys import S3_ACC_KEY_ID, S3_SEC_ACC_KEY, SEC_KEY, S3_STOR_NAME
+from .keys import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = SEC_KEY
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True,
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '16.170.232.85']
 
-# Application definition
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = EMAIL_USER
+# EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
+# DEFAULT_FROM_EMAIL = DEFAULT_EMAIL
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -47,6 +54,8 @@ INSTALLED_APPS = [
     'djoser',
     'django_filters',
     'rest_framework_swagger',
+
+
 
 ]
 
@@ -136,7 +145,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'shcsite/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -148,7 +158,7 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 2,
+    'PAGE_SIZE': 5,
 
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',

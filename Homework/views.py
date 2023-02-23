@@ -1,7 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from .models import HomeWork
@@ -53,6 +52,7 @@ class HomeWorkViewSet(ModelViewSet):
             HomeWork.objects.bulk_create(files_list)
         return Response('Success')
 
+    # from rest_framework.decorators import action
     # @action(detail=False, methods=["POST"])
     # def multiple_upload(self, request):
     #     multi = MultipleFileSerializer(data=request.data, context={'request': request})
