@@ -22,7 +22,7 @@ SECRET_KEY = SEC_KEY
 
 DEBUG = True,
 
-ALLOWED_HOSTS = ['127.0.0.1', '16.170.232.85']
+ALLOWED_HOSTS = ['127.0.0.1', '13.53.40.27']
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -60,6 +60,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
